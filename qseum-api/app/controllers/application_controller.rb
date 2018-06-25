@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
     include ActionController::MimeResponds
     before_action :verify_authentication
     helper_method :current_user
-    protect_from_forgery with: :null_session
+    # protect_from_forgery with: :null_session
     
 
     def current_user    

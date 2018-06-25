@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: 1
+  primary_name: MyString
+  secondary_name: MyString
+  address: MyString
+  phone: MyString
+  email: MyString
+  membership_type: 1
+  join_date: 2018-06-25
+  expiration_date: 2018-06-25
+
+two:
+  account: 1
+  primary_name: MyString
+  secondary_name: MyString
+  address: MyString
+  phone: MyString
+  email: MyString
+  membership_type: 1
+  join_date: 2018-06-25
+  expiration_date: 2018-06-25
