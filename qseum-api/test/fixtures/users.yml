@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id              :bigint(8)        not null, primary key
-#  account         :integer
+#  account         :string
 #  username        :string
 #  password_digest :string
 #  api_token       :string
