@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         if @user
-            render json: @user, status:200
+            render json: 'api/v1/user/show.json', status:200
         else
             format.json { render json: @user.errors, status: :unprocessable_entity }
         end
