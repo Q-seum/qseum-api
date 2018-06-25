@@ -10,5 +10,4 @@ class Api::V1::LoginsController < ApplicationController
                 render json: { error: "Invalid credentials" }, status: 401
             end
         end
-    
     end
