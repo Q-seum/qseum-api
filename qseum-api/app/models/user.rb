@@ -15,6 +15,7 @@
 
 class User < ApplicationRecord
     has_many :visits
+    belongs_to :membership, foreign_key: :account
     has_one_attached :image
     
     has_secure_password
