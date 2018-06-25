@@ -1,4 +1,4 @@
-class LoginsController < ApplicationController
+class Api::V1::LoginsController < ApplicationController
         skip_before_action :verify_authentication
     
         def create
