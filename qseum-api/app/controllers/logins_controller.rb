@@ -10,9 +10,5 @@ class LoginsController < ApplicationController
                 render json: { error: "Invalid credentials" }, status: 401
             end
         end
-
-        # def destroy
-        #     bearer_token = nil
-        # end
     
     end
