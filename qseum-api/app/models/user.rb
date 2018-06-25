@@ -20,7 +20,7 @@ class User < ApplicationRecord
     
     has_secure_password
     has_secure_token :api_token
-    validates :username, :password_digest, :email_address, presence: true
+    validates :username, :password_digest, :email, presence: true
     validates_uniqueness_of :username
 
     def to_s
