@@ -9,6 +9,7 @@
 tmp/*
 log/
 *.log
+../.vs/
 
 # Icon must end with two \r
 Icon
