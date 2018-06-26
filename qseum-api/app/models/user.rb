@@ -28,7 +28,7 @@ class User < ApplicationRecord
     def users_limit_per_account
         @member = Membership.find_by(account: :account)
         @user = User.find_by(account: :account)
-        @user2 = User.find(account: :account).where(:id != @user.id)
+        @user2 = User.find_by(account: :account).where(:id != @user.id)
         if @member.num_allowed == 2 && @user2
             errors.add(:account, "2 users already exist for this membership account")
         elsif @member.num_allowed == 1 && @user
