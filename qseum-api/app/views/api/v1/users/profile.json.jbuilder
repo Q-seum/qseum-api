@@ -1,10 +1,3 @@
-json.links do
-    json.self api_v1_user_path(@user)
-    json.newVisit do
-        json.method "POST"
-        json.href api_v1_visits_path
-    end
-end
 
 json.data do
     json.id @user.id
