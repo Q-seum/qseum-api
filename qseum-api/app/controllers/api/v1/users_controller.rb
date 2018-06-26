@@ -1,13 +1,17 @@
 class Api::V1::UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
-    skip_before_action :verify_authentication
+    skip_before_action :verify_authentication, only: [:create]
 
     def create
         @user = User.new(user_params)
-        if @user.save!
-            render "api/v1/users/show.json", status:201
-        else 
-            render json: { error: "You did not follow the user parameters"}, status: 401
+        if Membership.find_by(account: params[:account])
+            if @user.save!
+                render "api/v1/users/show.json", status:201
+            else 
+                render json: { error: "You did not follow the user parameters"}, status: 401
+            end
+        else
+            render json: {error: "Not a valid account number"}, status: 401
         end
     end
 
