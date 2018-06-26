@@ -5,10 +5,10 @@
 #  id         :bigint(8)        not null, primary key
 #  user_id    :integer
 #  account    :string
-#  visit_date :date
 #  visitors   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  date       :date
 #
 
 require 'test_helper'

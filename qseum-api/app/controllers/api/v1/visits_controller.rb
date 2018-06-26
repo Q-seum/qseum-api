@@ -2,7 +2,7 @@ class Api::V1::VisitsController < ApplicationController
 
     def index
         if current_user && current_user.is_admin
-            @visits = Visit.where(visit_date: Date.today).order("created_on DESC").all
+            @visits = Visit.todays_visits
         else
             render json: { error: "You are not authorized to access this data."}, status: 401 
         end
@@ -11,8 +11,9 @@ class Api::V1::VisitsController < ApplicationController
     def create
         if current_user && current_user.is_admin
             @visit = Visit.new(visit_params)
+            @visit.date = Date.today
             if @visit.save!
-                render "api/v1/visits/index.json", status:201
+                render :index, status:201
             else 
                 render json: { error: "You did not follow the visit parameters"}, status: 401
             end
