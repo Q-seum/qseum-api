@@ -4,11 +4,15 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if @user.save!
-            render "api/v1/users/show.json", status:201
-        else 
-            render json: { error: "You did not follow the user parameters"}, status: 401
-        end
+        @membership = Membership.find_by(account: user_params.account)
+        if @membership
+            if @user.save!
+                render "api/v1/users/show.json", status:201
+            else 
+                render json: { error: "You did not follow the user parameters"}, status: 401
+            end
+        else
+            render json: {error: "Not a valid account number"}, status: 401
     end
 
     def show

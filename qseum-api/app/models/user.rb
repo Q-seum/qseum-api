@@ -27,7 +27,7 @@ class User < ApplicationRecord
     validate :users_limit_per_account
 
     def users_limit_per_account
-        @member = Membership.find_by(account: :account)
+        @member = Membership.find_by(account: user_params.account)
         @user = User.find_by(account: :account)
         if @user
             @user2 = User.find_by(account: :account).where(:id != @user.id)
