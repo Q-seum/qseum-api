@@ -21,8 +21,21 @@ class User < ApplicationRecord
     
     has_secure_password
     has_secure_token :api_token
-    validates :username, :password_digest, :email, presence: true
+    validates :username, :password_digest, :email, :account, presence: true
     validates_uniqueness_of :username
+    validate :users_limit_per_account
+
+    def users_limit_per_account
+        @member = Membership.find(:account)
+        @user = User.find(:account)
+        @user2 = User.find(:account).where(:id != @user.id)
+        if @member.num_allowed == 2 && @user2
+            errors.add(:account, "2 users already exist for this membership account")
+        elsif @member.num_allowed == 1 && @user
+            errors.add(:account, "A user already exists for this membership account")
+        end
+
+    end
 
     def to_s
         username

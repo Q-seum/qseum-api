@@ -18,4 +18,12 @@
 
 class Membership < ApplicationRecord
     has_many :users
+
+    def num_allowed
+        if :secondary_name != null
+            return 2
+        else
+            return 1
+        end
+    end
 end
