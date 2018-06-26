@@ -13,7 +13,7 @@
 #  updated_at      :datetime         not null
 #  accommodations  :string
 #
-require 'Membership'
+require 'membership'
 
 class User < ApplicationRecord
     has_many :visits
