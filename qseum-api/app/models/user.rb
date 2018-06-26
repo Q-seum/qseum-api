@@ -11,6 +11,7 @@
 #  is_admin        :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  accommodations  :string
 #
 
 class User < ApplicationRecord
