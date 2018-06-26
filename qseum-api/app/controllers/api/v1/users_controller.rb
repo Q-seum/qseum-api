@@ -1,10 +1,10 @@
 class Api::V1::UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
-    skip_before_action :verify_authentication
+    skip_before_action :verify_authentication, only: [:create]
 
     def create
         @user = User.new(user_params)
-        if Membership.find_by(account: user_params.account)
+        if Membership.find_by(account: user_params[:account])
             if @user.save!
                 render "api/v1/users/show.json", status:201
             else 
