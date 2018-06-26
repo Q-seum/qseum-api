@@ -10,5 +10,6 @@ json.data do
         json.membership_type @user.membership.membership_type
         json.join_date @user.membership.join_date
         json.expiration_date (@user.membership.join_date + 1.year)
+        json.visits @user.visits
     end
 end

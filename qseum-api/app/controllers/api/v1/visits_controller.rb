@@ -37,6 +37,6 @@ class Api::V1::VisitsController < ApplicationController
 
     private
         def visit_params
-            params.permit(:user_id, :account, :visit_date, :visitors)
+            params.permit(:user_id, :account,  :visitors)
         end
 end
