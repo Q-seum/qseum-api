@@ -1,3 +1,11 @@
+json.links do
+    json.self api_v1_user_path(@user)
+    json.newVisit do
+        json.method "POST"
+        json.href api_v1_visits_path
+    end
+end
+
 json.data do
     json.id @user.id
     json.attributes do
@@ -5,11 +13,11 @@ json.data do
         json.username @user.username
         json.email @user.email
         json.apiToken @user.api_token
-        json.is_admin @user.is_admin
+        json.isAdmin @user.is_admin
         json.accommodations @user.accommodations
-        json.membership_type @user.membership.membership_type
-        json.join_date @user.membership.join_date
-        json.expiration_date (@user.membership.join_date + 1.year)
+        json.membershipType @user.membership.membership_type
+        json.joinDate @user.membership.join_date
+        json.expirationDate (@user.membership.join_date + 1.year)
         json.visits @user.visits
     end
 end
