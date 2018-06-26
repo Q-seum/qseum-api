@@ -13,6 +13,7 @@
 #  updated_at      :datetime         not null
 #  accommodations  :string
 #
+require 'membership'
 
 class User < ApplicationRecord
     has_many :visits
@@ -26,9 +27,11 @@ class User < ApplicationRecord
     validate :users_limit_per_account
 
     def users_limit_per_account
-        @member = Membership.find(:account)
-        @user = User.find(:account)
-        @user2 = User.find(:account).where(:id != @user.id)
+        @member = Membership.find_by(account: :account)
+        @user = User.find_by(account: :account)
+        if @user
+            @user2 = User.find_by(account: :account).where(:id != @user.id)
+        end
         if @member.num_allowed == 2 && @user2
             errors.add(:account, "2 users already exist for this membership account")
         elsif @member.num_allowed == 1 && @user
