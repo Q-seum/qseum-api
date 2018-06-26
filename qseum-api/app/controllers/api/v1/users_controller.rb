@@ -4,8 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        @membership = Membership.find_by(account: user_params.account)
-        if @membership
+        if Membership.find_by(account: user_params.account)
             if @user.save!
                 render "api/v1/users/show.json", status:201
             else 
@@ -13,6 +12,7 @@ class Api::V1::UsersController < ApplicationController
             end
         else
             render json: {error: "Not a valid account number"}, status: 401
+        end
     end
 
     def show
