@@ -53,9 +53,9 @@ class Api::V1::UsersController < ApplicationController
             if @existing_user
                 @second_user = User.where(:account => params[:account]).where.not( :id => @existing_user[:id]).first
             end
-            if @member.num_allowed == 2 && @second_user
+            if @member.secondary_name && @second_user
                 @user.errors.add(:account, "2 users already exist for this membership account")
-            elsif @member.num_allowed == 1 && @existing_user
+            elsif !@member.secondary_name && @existing_user
                 @user.errors.add(:account, "A user already exists for this membership account")
             end
         end
