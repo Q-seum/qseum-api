@@ -26,19 +26,6 @@ class User < ApplicationRecord
     validates_uniqueness_of :username
     # validate :users_limit_per_account
 
-    # def users_limit_per_account
-    #     @member = Membership.find_by(account: user_params.account)
-    #     @user = User.find_by(account: :account)
-    #     if @user
-    #         @user2 = User.find_by(account: :account).where(:id != @user.id)
-    #     end
-    #     if @member.num_allowed == 2 && @user2
-    #         errors.add(:account, "2 users already exist for this membership account")
-    #     elsif @member.num_allowed == 1 && @user
-    #         errors.add(:account, "A user already exists for this membership account")
-    #     end
-
-    # end
 
     def to_s
         username
