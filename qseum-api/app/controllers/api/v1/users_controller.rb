@@ -6,15 +6,10 @@ class Api::V1::UsersController < ApplicationController
         @user = User.new(user_params)
         @member = Membership.find_by(account: params[:account])
         if @member
-            users_limit_per_account
-            unless @user.errors.any?
-                if @user.save!
-                    render "api/v1/users/show.json", status:201
-                else 
-                    render json: { error: "You did not follow the user parameters"}, status: 401
-                end
+            if @user.save
+                render "api/v1/users/show.json", status:201
             else 
-                render json: @user.errors, status: :unprocessable_entity 
+                render json: @user.errors, status: 401
             end
         else
             render json: {error: "Not a valid account number"}, status: 401
@@ -48,17 +43,7 @@ class Api::V1::UsersController < ApplicationController
             @user = User.find(params[:id])
         end
 
-        def users_limit_per_account
-            @existing_user = User.where(:account => params[:account]).first
-            if @existing_user
-                @second_user = User.where(:account => params[:account]).where.not( :id => @existing_user[:id]).first
-            end
-            if @member.secondary_name && @second_user
-                @user.errors.add(:account, "2 users already exist for this membership account")
-            elsif !@member.secondary_name && @existing_user
-                @user.errors.add(:account, "A user already exists for this membership account")
-            end
-        end
+ 
 
         def user_params
             params.permit(:account, :username, :password, :email)
