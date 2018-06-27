@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApplicationController
                     render json: { error: "You did not follow the user parameters"}, status: 401
                 end
             else 
-                format.json { render json: @user.errors, status: :unprocessable_entity }  
+                render json: @user.errors, status: :unprocessable_entity 
             end
         else
             render json: {error: "Not a valid account number"}, status: 401
@@ -49,9 +49,9 @@ class Api::V1::UsersController < ApplicationController
         end
 
         def users_limit_per_account
-            @existing_user = User.find_by(account: params[:account])
+            @existing_user = User.where(:account => params[:account]).first
             if @existing_user
-                @second_user = User.where(account: params[:account]).where(:id != @existing_user.id)
+                @second_user = User.where(:account => params[:account]).where.not( :id => @existing_user[:id]).first
             end
             if @member.num_allowed == 2 && @second_user
                 @user.errors.add(:account, "2 users already exist for this membership account")
