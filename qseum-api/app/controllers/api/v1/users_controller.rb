@@ -4,8 +4,10 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if Membership.find_by(account: params[:account])
-            if @user.save!
+        @member = Membership.find_by(account: params[:account])
+        # users_limit_per_account
+        if @member
+            if @user.save
                 render "api/v1/users/show.json", status:201
             else 
                 render json: { error: "You did not follow the user parameters"}, status: 401
@@ -17,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        if @user.is_admin
+        if current_user.is_admin
             render "api/v1/users/show.json", status:200
         elsif @user == current_user
             render "api/v1/users/profile.json", status:200
@@ -41,6 +43,18 @@ class Api::V1::UsersController < ApplicationController
         def set_user
             @user = User.find(params[:id])
         end
+
+    # def users_limit_per_account
+    #     @user = User.find_by(account: :account)
+    #     if @user
+    #         @user2 = User.find_by(account: :account).where(:id != @user.id)
+    #     end
+    #     if @member.num_allowed == 2 && @user2
+    #         errors.add(:account, "2 users already exist for this membership account")
+    #     elsif @member.num_allowed == 1 && @user
+    #         errors.add(:account, "A user already exists for this membership account")
+    #     end
+    # end
 
         def user_params
             params.permit(:account, :username, :password, :email)
