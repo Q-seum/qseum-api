@@ -20,7 +20,7 @@ class Membership < ApplicationRecord
     has_many :users
 
     def num_allowed
-        if :secondary_name != null
+        if :secondary_name != nil
             return 2
         else
             return 1
