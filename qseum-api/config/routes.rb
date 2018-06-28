@@ -5,6 +5,7 @@ namespace :api do
       resources :users, format: "json"
       resources :visits, format: "json"
       resource :logins, only: :create
+      resources :issues, format: "json"
   end
 end
 
