@@ -19,5 +19,7 @@ json.data do
         json.joinDate @user.membership.join_date
         json.expirationDate (@user.membership.join_date + 1.year)
         json.visits @user.visits
+        json.selfie @user.selfie
+        json.validSelfie @user.valid_selfie
     end
 end
