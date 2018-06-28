@@ -21,8 +21,11 @@ require 'membership'
 class User < ApplicationRecord
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     has_many :visits, dependent: :destroy
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     attr_accessor :remember_token, :activation_token, :reset_token
