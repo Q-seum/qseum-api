@@ -25,7 +25,7 @@ class User < ApplicationRecord
     
     has_secure_password
     has_secure_token :api_token
-    validates :username, :password_digest, :email, :account, presence: true
+    validates :username, :password_digest, :email, :account, :selfie, presence: true
     validates_uniqueness_of :username
     validate :users_limit_per_account
 
