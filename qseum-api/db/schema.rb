@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_175735) do
     t.datetime "updated_at", null: false
     t.string "accommodations"
     t.string "selfie"
-    t.boolean "valid_selfie", default: false, null: false
+    t.boolean "valid_selfie"
   end
 
   create_table "visits", force: :cascade do |t|
