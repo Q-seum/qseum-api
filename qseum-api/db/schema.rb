@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2018_06_28_175735) do
+=======
+ActiveRecord::Schema.define(version: 2018_06_28_202226) do
+>>>>>>> Stashed changes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_175735) do
     t.string "accommodations"
     t.string "selfie"
     t.boolean "valid_selfie"
+    t.string "reset_digest"
   end
 
   create_table "visits", force: :cascade do |t|
