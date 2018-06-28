@@ -11,7 +11,7 @@ class Api::V1::VisitsController < ApplicationController
     def create
         if current_user && current_user.is_admin
             @visit = Visit.new(visit_params)
-            @visit.date = Date.today
+            @visit.date = Time.now
             if @visit.save!
                 render :index, status:201
             else 
