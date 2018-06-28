@@ -12,17 +12,20 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  accommodations  :string
+#  selfie          :string
+#  valid_selfie    :boolean          default(FALSE), not null
 #
+
 require 'membership'
 
 class User < ApplicationRecord
-    has_many :visits
+    has_many :visits, dependent: :destroy
     belongs_to :membership, foreign_key: :account
-    has_one_attached :image
+    # has_one_attached :image
     
     has_secure_password
     has_secure_token :api_token
-    validates :username, :password_digest, :email, :account, presence: true
+    validates :username, :password_digest, :email, :account, :selfie, presence: true
     validates_uniqueness_of :username
     validate :users_limit_per_account
 

@@ -18,7 +18,17 @@ json.data do
         json.membershipType @user.membership.membership_type
         json.joinDate @user.membership.join_date
         json.expirationDate (@user.membership.join_date + 1.year)
-        json.visits @user.visits
+        json.visits @user.visits.order('date DESC') do |visit|
+            json.id visit.id 
+            json.primary visit.user.membership.primary_name
+            json.secondary visit.user.membership.secondary_name
+            json.email visit.user.email
+            json.phone visit.user.membership.phone
+            json.account visit.account
+            json.membershipType visit.user.membership.membership_type
+            json.visitors visit.visitors 
+            json.date visit.date
+        end
         json.selfie @user.selfie
         json.validSelfie @user.valid_selfie
     end

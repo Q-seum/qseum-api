@@ -56,5 +56,4 @@ class IssuesController < ApplicationController
         end
 
 
-    
 end
