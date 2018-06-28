@@ -11,12 +11,12 @@ json.data do
         json.membershipType @user.membership.membership_type
         json.joinDate @user.membership.join_date
         json.expirationDate (@user.membership.join_date + 1.year)
-        json.visits @user.visits do |visit|
+        json.visits @user.visits.order('date DESC') do |visit|
             json.id visit.id 
             json.account visit.account
             json.userId visit.user_id
             json.visitors visit.visitors 
-            json.date visit.date.in_time_zone
+            json.date visit.date
         end
         json.selfie @user.selfie
         json.validSelfie @user.valid_selfie

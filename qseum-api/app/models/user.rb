@@ -19,9 +19,9 @@
 require 'membership'
 
 class User < ApplicationRecord
-    has_many :visits
+    has_many :visits, dependent: :destroy
     belongs_to :membership, foreign_key: :account
-    has_one_attached :image
+    # has_one_attached :image
     
     has_secure_password
     has_secure_token :api_token
