@@ -9,10 +9,10 @@ class Api::V1::UsersController < ApplicationController
             if @user.save
                 render "api/v1/users/show.json", status:201
             else 
-                render json: {json.errors @user.errors}, status: 401
+                format.json  {render json: json.errors @user.errors}, status: 401
             end
         else
-            render json: {json.errors error: "Not a valid account number"}, status: 401
+            format.json {render json: json.errors error: "Not a valid account number"}, status: 401
         end
     end
 
@@ -23,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
         elsif @user == current_user
             render "api/v1/users/profile.json", status:200
         else
-            render json: { json.errors @user.errors, status: :unprocessable_entity }
+            format.json { render json: json.errors @user.errors, status: :unprocessable_entity }
         end
     end
 
@@ -34,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
                 format.json { head :no_content }
             end
         else
-            render json: { json.errors @user.errors, status: :unprocessable_entity }
+            format.json { render json: json.errors @user.errors, status: :unprocessable_entity }
         end
     end
 
