@@ -16,6 +16,16 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
+    def update
+        @user = current_user
+        if @user.update(user_params)
+            render "api/v1/users/show.json", status:201
+        else                
+            render json: @user.errors, status: 401
+        end
+        
+    end
+
     def show
         @user = User.find(params[:id])
         if current_user.is_admin
