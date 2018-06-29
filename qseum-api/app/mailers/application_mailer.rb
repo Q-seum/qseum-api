@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'https://q-seum.firebaseapp.com/'
   layout 'mailer'
 end

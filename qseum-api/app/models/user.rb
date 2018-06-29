@@ -19,7 +19,20 @@
 require 'membership'
 
 class User < ApplicationRecord
+<<<<<<< Updated upstream
+    
     has_many :visits, dependent: :destroy
+
+=======
+>>>>>>> Stashed changes
+    attr_accessor :remember_token, :activation_token, :reset_token
+    before_save :downcase_email
+    before_create :create_activation_digest
+
+<<<<<<< Updated upstream
+=======
+    has_many :visits
+>>>>>>> Stashed changes
     belongs_to :membership, foreign_key: :account
     # has_one_attached :image
     
@@ -42,7 +55,22 @@ class User < ApplicationRecord
         end
     end
 
+    def create_reset_digest
+        self.reset_token = User.new_token
+        update_attribute(:reset_digest, User.digest(reset_token))
+    end
+
+    def send_password_reset_email
+        UserMailer.password_reset(self).deliver_now
+    end
+
     def to_s
         username
+    end
+
+    private
+
+    def downcase_email
+    self.email = email.downcase
     end
 end
