@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_202226) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.text "text"
+    t.boolean "resolved", default: false, null: false
   end
 
   create_table "memberships", force: :cascade do |t|
