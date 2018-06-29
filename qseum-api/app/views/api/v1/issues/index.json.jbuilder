@@ -6,4 +6,5 @@ json.array! @issues do |issue|
     json.phone issue.user.membership.phone   
     json.created_at issue.created_at
     json.text issue.text
+    json.resolved issue.resolved
 end
