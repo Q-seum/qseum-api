@@ -12,8 +12,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @passwordreset = PasswordResets.find_by(new_token: params[:id])
-    if @passwordreset.save
+    @passwordreset = User.find_by(api_token: params[:id])
+    if @passwordreset.update
       @passwordreset.user.password = params[:password]
       @passwordreset.user.save
       render status:200
