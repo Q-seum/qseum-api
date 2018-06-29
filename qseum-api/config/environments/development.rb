@@ -12,6 +12,7 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
   host = 'https://q-seum.firebaseapp.com/'

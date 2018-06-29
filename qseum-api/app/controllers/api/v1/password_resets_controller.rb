@@ -11,7 +11,15 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  def edit
+  def update
+    @passwordreset = PasswordResets.find_by(new_token: params[:id])
+    if @passwordreset.save
+      @passwordreset.user.password = params[:password]
+      @passwordreset.user.save
+      render status:200
+    else
+      render status:400
+    end
   end
 
 end
