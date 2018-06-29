@@ -7,6 +7,7 @@
 #  updated_at :datetime         not null
 #  user_id    :integer
 #  text       :text
+#  resolved   :boolean          default(FALSE), not null
 #
 
 require 'test_helper'
