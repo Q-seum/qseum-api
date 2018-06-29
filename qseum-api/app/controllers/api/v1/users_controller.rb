@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def update
-        @user = current_user
+        @user = User.find(params[:id])
         if @user.update(user_params)
             render "api/v1/users/show.json", status:201
         else                

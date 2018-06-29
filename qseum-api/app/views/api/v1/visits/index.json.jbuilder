@@ -1,4 +1,4 @@
-json.array! @visits.order('date DESC') do |visit|
+json.array! @visits do |visit|
     json.id visit.id
     json.date visit.date
     json.primary visit.user.membership.primary_name

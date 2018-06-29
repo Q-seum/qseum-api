@@ -1,8 +1,8 @@
-class IssuesController < ApplicationController
+class Api::V1::IssuesController < ApplicationController
 
     def index
         if current_user && current_user.is_admin
-            render "api/v1/issues/index.json", status:200
+            @issues = Issue.todays_issues
         else
             render json: { error: "You are not authorized to access this data."}, status: 401 
         end
@@ -18,8 +18,8 @@ class IssuesController < ApplicationController
     end
 
     def show
-        if current_user && current_user.is_admin
-            @issue = Issue.find(params[:id])
+        @issue = Issue.find(params[:id])
+        if current_user && (current_user.is_admin || (current_user == @issue.user))
             if @issue
                 render "api/v1/issues/show.json", status:200
             else
@@ -30,14 +30,6 @@ class IssuesController < ApplicationController
         end
     end
 
-    def edit
-        @issue = Issue.find(params[:id])
-          if current_user && current_user.is_admin
-              @issue = Issue.find(params[:id])
-          else
-              render json: { error: "Only admin can edit an issue" }, status: 401
-          end
-      end
 
       def update
         @issue = Issue.find(params[:id])
@@ -54,6 +46,5 @@ class IssuesController < ApplicationController
         def issue_params
             params.permit(:user_id, :text)
         end
-
 
 end
