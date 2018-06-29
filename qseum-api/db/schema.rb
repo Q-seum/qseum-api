@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_202226) do
+ActiveRecord::Schema.define(version: 2018_06_29_202637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2018_06_28_202226) do
     t.integer "membership_type"
     t.date "join_date"
     t.date "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "password_resets", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "email"
+    t.string "new_token"
+    t.boolean "used", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

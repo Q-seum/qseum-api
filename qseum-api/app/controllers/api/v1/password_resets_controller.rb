@@ -3,9 +3,10 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[password_reset][:email].downcase)
+    @password_reset = PasswordReset.new(pwd_params)
+    @user = User.find_by(email: pwd_params[:email])
     if @user
-      @user.create_reset_digest
+      @password_reset.save
       @user.send_password_reset_email
     else
     end
@@ -21,5 +22,11 @@ class PasswordResetsController < ApplicationController
       render status:400
     end
   end
+
+  private
+  def pwd_params
+      params.permit(:user_id, :email, :new_token)
+  end
+
 
 end
