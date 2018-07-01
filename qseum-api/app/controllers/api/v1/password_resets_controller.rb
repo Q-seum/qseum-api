@@ -17,11 +17,14 @@ class Api::V1::PasswordResetsController < ApplicationController
   end
 
   def update
-    @passwordreset = User.find_by(api_token: params[:id])
-    if @passwordreset.update
-      @passwordreset.user.password = params[:password]
-      @passwordreset.user.save
-      render status:200
+    @pwreset = PasswordReset.find_by(new_token: params[:new_token])
+    @user = User.find(@pwreset.user_id)
+    @user.password = params[:password]
+    binding.pry
+    @user.save
+    params.delete :password
+    if @pwreset.update(pwd_params)
+      render json: @user, status:200
     else
       render status:400
     end
@@ -29,7 +32,7 @@ class Api::V1::PasswordResetsController < ApplicationController
 
   private
     def pwd_params
-        params.permit(:user_id, :email)
+        params.permit(:user_id, :email, :used, :password)
     end
 
 
