@@ -1,13 +1,17 @@
-class PasswordResetsController < ApplicationController
+class Api::V1::PasswordResetsController < ApplicationController
+  skip_before_action :verify_authentication
+
   def new
   end
 
   def create
     @password_reset = PasswordReset.new(pwd_params)
-    @user = User.find_by(email: pwd_params[:email])
+    @user = User.find_by(email: @password_reset.email)
     if @user
+      @password_reset.user_id = @user.id
       @password_reset.save
-      @user.send_password_reset_email
+      # @user.send_password_reset_email
+      render json: { new_token: @password_reset.new_token }, status:201
     else
     end
   end
@@ -24,9 +28,9 @@ class PasswordResetsController < ApplicationController
   end
 
   private
-  def pwd_params
-      params.permit(:user_id, :email, :new_token)
-  end
+    def pwd_params
+        params.permit(:user_id, :email)
+    end
 
 
 end
