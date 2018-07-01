@@ -10,7 +10,7 @@ class Api::V1::PasswordResetsController < ApplicationController
     if @user
       @password_reset.user_id = @user.id
       @password_reset.save
-      # @user.send_password_reset_email
+      @password_reset.send_password_reset_email
       render json: { new_token: @password_reset.new_token }, status:201
     else
     end
