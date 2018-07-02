@@ -13,7 +13,7 @@
 #  updated_at      :datetime         not null
 #  accommodations  :string
 #  selfie          :string
-#  valid_selfie    :boolean          default(FALSE), not null
+#  valid_selfie    :boolean
 #  reset_digest    :string
 #
 
