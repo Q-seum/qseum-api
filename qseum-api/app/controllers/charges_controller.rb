@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
             :description => 'Rails Stripe customer',
             :currency    => 'usd'
         )
-    
+        render json: charge
         rescue Stripe::CardError => e
         render json: e 
     end
