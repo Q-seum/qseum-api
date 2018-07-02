@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tickets: 1
+  used: false
+  recip_email: MyString
+  buyer_email: MyString
+
+two:
+  tickets: 1
+  used: false
+  recip_email: MyString
+  buyer_email: MyString
