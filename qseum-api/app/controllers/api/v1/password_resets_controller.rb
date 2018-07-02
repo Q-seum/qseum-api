@@ -20,7 +20,7 @@ class Api::V1::PasswordResetsController < ApplicationController
   def update
     @pwreset = PasswordReset.find_by(new_token: params[:new_token])
     @user = User.find(@pwreset.user_id)
-    if @password_reset.used == false
+    if @pwreset.used == false
       @user.password = params[:password]
       @user.save(:validate => false)
       params.delete :password
