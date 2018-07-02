@@ -13,9 +13,9 @@ class Api::V1::PasswordResetsController < ApplicationController
         @password_reset.save
         @password_reset.send_password_reset_email
         render json: { new_token: @password_reset.new_token }, status:201
-      else
+      end
     else
-      render json: { error: "This link has already been used" } status:401
+      render json: { error: "This link has already been used" }, status:401
     end
   end
 
