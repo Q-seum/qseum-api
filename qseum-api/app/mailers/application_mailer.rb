@@ -1,6 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
 
-  default from: 'qseum.team@gmail.com'
+  default from: ENV['email']
   layout 'mailer'
 
 end
