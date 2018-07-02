@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_07_02_192213) do
     t.datetime "updated_at", null: false
     t.string "accommodations"
     t.string "selfie"
-    t.boolean "valid_selfie"
+    t.boolean "valid_selfie", default: false, null: false
     t.string "reset_digest"
   end
 
