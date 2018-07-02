@@ -20,10 +20,10 @@ class Api::V1::PasswordResetsController < ApplicationController
   def update
     @pwreset = PasswordReset.find_by(new_token: params[:new_token])
     @user = User.find(@pwreset.user_id)
-    @user.password = params[:password]
-    @user.save(:validate => false)
-    params.delete :password
     if @password_reset.used == false
+      @user.password = params[:password]
+      @user.save(:validate => false)
+      params.delete :password
       if @pwreset.update(pwd_params)
         render json: @user, status:200
       else
