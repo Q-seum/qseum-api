@@ -3,7 +3,19 @@
   <head>
   </head>
   <body>
-    <h1>You have recieved  <%= @ticket.tickets %> admissions tickets 
+    <h1>You have recieved  
+    <% if @ticket.general %> 
+      <%= @ticket.general %> general admission tickets, 
+    <% end %>
+    <% if @ticket.senior %> 
+      <%= @ticket.senior %> senior admission tickets, 
+    <% end %>
+    <% if @ticket.military %> 
+      <%= @ticket.general %> military admission tickets, 
+    <% end %>
+    <% if @ticket.child %> 
+      <%= @ticket.child %> child admission tickets
+    <% end %>
     to the Museum of Life and Science!</h1>
     <p>
       Here is your personal QR Code for admission into the building:
@@ -32,11 +44,11 @@
 
 
     <table class="qr-code">
-      <% qrcode = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/api/v1/tickets/#{@ticket.id}") %>
-      <% qrcode.modules.each_index do |x| %>
+      <%# <% qrcode = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/api/v1/tickets/#{@ticket.id}") %>
+      <% @qr.modules.each_index do |x| -%>
       <tr>
-      <% qrcode.modules.each_index do |y| %>
-       <% if qrcode.dark?(x,y) %>
+      <% @qr.modules.each_index do |y| -%>
+       <% if @qr.dark?(x,y) %>
         <td class="black"/>
        <% else %>
         <td class="white"/>

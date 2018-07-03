@@ -1,5 +1,17 @@
 
-You have recieved <%= @ticket.tickets %> admissions tickets 
+You have recieved 
+    <% if @ticket.general %> 
+      <%= @ticket.general %> general admission tickets, 
+    <% end %>
+    <% if @ticket.senior %> 
+      <%= @ticket.senior %> senior admission tickets, 
+    <% end %>
+    <% if @ticket.military %> 
+      <%= @ticket.general %> military admission tickets, 
+    <% end %>
+    <% if @ticket.child %> 
+      <%= @ticket.child %> child admission tickets
+    <% end %>
 to the Museum of Life and Science!
 
 Here is your personal QR Code for admission into the building:

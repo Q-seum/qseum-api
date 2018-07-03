@@ -1,5 +1,6 @@
-class ChargesController < ApplicationController
+class Api::V1::ChargesController < ApplicationController
     skip_before_action :verify_authentication
+    require 'rqrcode'
 
     def new
     end
@@ -29,11 +30,11 @@ class ChargesController < ApplicationController
                 :military => params[:military],
                 :child => params[:child]
             )
-            TicketMailer.with(ticket).send_ticket.deliver_now
-            render json: {Thanks for your purchase! Ticket will be emailed shortly.}
+
+            TicketMailer.send_ticket(ticket).deliver_now
+            render status: 201, json: ticket
         else
-            rescue Stripe::CardError => e
-            render json: e 
+            render json: { error: Stripe::CardError } 
         end
     end
 
