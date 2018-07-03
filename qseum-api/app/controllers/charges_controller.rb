@@ -9,16 +9,17 @@ class ChargesController < ApplicationController
         @amount = params[:amount]
 
     
-        # customer = Stripe::Customer.create(
-        #     :email => params[:stripeEmail],
-        #     :source  => params[:stripeToken]
-        # )
-        binding.pry
+        customer = Stripe::Customer.create(
+            :email => params[:email],
+            :source  => params[:source]
+        )
+        
         charge = Stripe::Charge.create(
-            :source  => params[:source],
+            :customer    => customer.id,
             :amount      => @amount,
             :description => 'Rails Stripe customer',
-            :currency    => 'usd'
+            :currency    => 'usd',
+            :receipt_email => params[:email]
         )
         render json: charge
         rescue Stripe::CardError => e
@@ -28,7 +29,7 @@ class ChargesController < ApplicationController
 
     private
     def charges_params
-        params.permit(:amount, :source)
+        params.permit(:amount, :source, :receipt_email)
     end
 
 
