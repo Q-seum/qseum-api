@@ -32,7 +32,7 @@
 
 
     <table class="qr-code">
-      <% qrcode = RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}") %>
+      <% qrcode = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/api/v1/tickets/#{@ticket.id}") %>
       <% qrcode.modules.each_index do |x| %>
       <tr>
       <% qrcode.modules.each_index do |y| %>

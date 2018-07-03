@@ -20,20 +20,21 @@ class ChargesController < ApplicationController
             :currency    => 'usd',
             :receipt_email => params[:email]
         )
-
-        ticket = Ticket.create(
-            :buyer_email => params[:email],
-            :recip_email => params[:recip_email],
-            :general => params[:general],
-            :senior => params[:senior],
-            :military => params[:military],
-            :child => params[:child]
-        )
-        render json: charge
-
-
-        rescue Stripe::CardError => e
-        render json: e 
+        if charge && charge.paid == true
+            ticket = Ticket.create(
+                :buyer_email => params[:email],
+                :recip_email => params[:recip_email],
+                :general => params[:general],
+                :senior => params[:senior],
+                :military => params[:military],
+                :child => params[:child]
+            )
+            TicketMailer.with(ticket).send_ticket.deliver_now
+            render json: {Thanks for your purchase! Ticket will be emailed shortly.}
+        else
+            rescue Stripe::CardError => e
+            render json: e 
+        end
     end
 
 
