@@ -22,9 +22,12 @@ class ChargesController < ApplicationController
         )
 
         ticket = Ticket.create(
-            :buyer_email => params[:email]
-            :recip_email => params[:recip_email]
-            :
+            :buyer_email => params[:email],
+            :recip_email => params[:recip_email],
+            :general => params[:general],
+            :senior => params[:senior],
+            :military => params[:military],
+            :child => params[:child]
         )
         render json: charge
 
