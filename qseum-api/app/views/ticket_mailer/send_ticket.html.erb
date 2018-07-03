@@ -23,8 +23,8 @@
       border-collapse: collapse;
       padding: 0;
       margin: 0;
-      width: 5px;
-      height: 5px;
+      width: 7px;
+      height: 7px;
     }
     table.qr-code td.black { background-color: #000; }
     table.qr-code td.white { background-color: #fff; }
@@ -32,10 +32,11 @@
 
 
     <table class="qr-code">
-      <% RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}").modules.each_index do |x| %>
+      <% qrcode = RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}") %>
+      <% qrcode.modules.each_index do |x| %>
       <tr>
-      <% RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}").modules.each_index do |y| %>
-       <% if RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}").dark?(x,y) %>
+      <% qrcode.modules.each_index do |y| %>
+       <% if qrcode.dark?(x,y) %>
         <td class="black"/>
        <% else %>
         <td class="white"/>
