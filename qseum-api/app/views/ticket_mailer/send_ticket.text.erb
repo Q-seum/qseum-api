@@ -1,16 +1,17 @@
 
 You have recieved 
+     <h1>You have recieved  
     <% if @ticket.general %> 
-      <%= @ticket.general %> general admission tickets, 
+      <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
     <% end %>
     <% if @ticket.senior %> 
-      <%= @ticket.senior %> senior admission tickets, 
+      <%= @ticket.senior %> senior admission <%= 'ticket'.pluralize(@ticket.senior) %>, 
     <% end %>
     <% if @ticket.military %> 
-      <%= @ticket.general %> military admission tickets, 
+      <%= @ticket.military %> military admission <%= 'ticket'.pluralize(@ticket.military) %>, 
     <% end %>
     <% if @ticket.child %> 
-      <%= @ticket.child %> child admission tickets
+      <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
     <% end %>
 to the Museum of Life and Science!
 
