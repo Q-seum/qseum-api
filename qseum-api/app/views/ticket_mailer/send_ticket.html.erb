@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>You have recieved <%= @ticket.tickets %> admissions tickets 
+    to the Museum of Life and Science!</h1>
+    <p>
+      Here is your personal QR Code for admission into the building:
+    </p>
+      <%= RQRCode::QRCode.new(api_v1_user_path) %>
+      <br>
+    <p>Thanks for attending the Museum of Life and Science, have a great day!</p>
+  </body>
+</html>
