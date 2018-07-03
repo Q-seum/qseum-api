@@ -8,7 +8,6 @@ class ChargesController < ApplicationController
         # Amount in cents
         @amount = params[:amount]
 
-    
         customer = Stripe::Customer.create(
             :email => params[:email],
             :source  => params[:source]
@@ -17,11 +16,19 @@ class ChargesController < ApplicationController
         charge = Stripe::Charge.create(
             :customer    => customer.id,
             :amount      => @amount,
-            :description => 'Rails Stripe customer',
+            :description => 'Q-seum admission tickets',
             :currency    => 'usd',
             :receipt_email => params[:email]
         )
+
+        ticket = Ticket.create(
+            :buyer_email => params[:email]
+            :recip_email => params[:recip_email]
+            :
+        )
         render json: charge
+
+
         rescue Stripe::CardError => e
         render json: e 
     end
