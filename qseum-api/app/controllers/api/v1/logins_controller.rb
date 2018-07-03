@@ -7,7 +7,7 @@ class Api::V1::LoginsController < ApplicationController
             if user && user.authenticate(params[:password])
                 render json: { token: user.api_token , id: user.id, admin: user.is_admin }, status: 201
             else
-                render json: { error: "Invalid credentials" }, status: 401
+                render json: { error: "Incorrect username or password" }, status: 401
             end
         end
     end
