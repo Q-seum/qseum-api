@@ -1,9 +1,9 @@
 
-You have recieved <%= #{@ticket.tickets} %> admissions tickets 
+You have recieved <%= @ticket.tickets %> admissions tickets 
 to the Museum of Life and Science!
-===============================================
+
 Here is your personal QR Code for admission into the building:
-<%= RQRCode::QRCode.new(api_v1_user_path) %>
+<%= @qrcode %>
  
 Thanks for attending the Museum of Life and Science, have a great day!
  

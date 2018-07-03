@@ -1,15 +1,50 @@
-
 <!DOCTYPE html>
 <html>
   <head>
   </head>
   <body>
-    <h1>You have recieved <%= @ticket.tickets %> admissions tickets 
+    <h1>You have recieved  <%= @ticket.tickets %> admissions tickets 
     to the Museum of Life and Science!</h1>
     <p>
       Here is your personal QR Code for admission into the building:
     </p>
-      <%= RQRCode::QRCode.new(api_v1_user_path) %>
+
+    <style>
+    table.qr-code {
+      border-width: 0;
+      border-style: none;
+      border-color: #0000ff;
+      border-collapse: collapse;
+    }
+    table.qr-code td {
+      border-width: 0;
+      border-style: none;
+      border-color: #0000ff;
+      border-collapse: collapse;
+      padding: 0;
+      margin: 0;
+      width: 5px;
+      height: 5px;
+    }
+    table.qr-code td.black { background-color: #000; }
+    table.qr-code td.white { background-color: #fff; }
+    </style>
+
+
+    <table class="qr-code">
+      <% RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}").modules.each_index do |x| %>
+      <tr>
+      <% RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}").modules.each_index do |y| %>
+       <% if RQRCode::QRCode.new("localhost3000:/api/v1/tickets/#{@ticket.id}").dark?(x,y) %>
+        <td class="black"/>
+       <% else %>
+        <td class="white"/>
+       <% end %>
+      <% end %>
+      </tr>
+      <% end %>
+    </table>
+   
       <br>
     <p>Thanks for attending the Museum of Life and Science, have a great day!</p>
   </body>
