@@ -1,6 +1,5 @@
 
-You have recieved 
-     <h1>You have recieved  
+You have recieved  
     <% if @ticket.general %> 
       <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
     <% end %>
@@ -16,7 +15,7 @@ You have recieved
 to the Museum of Life and Science!
 
 Here is your personal QR Code for admission into the building:
-<%= @qrcode %>
+<%= @qr %>
  
 Thanks for attending the Museum of Life and Science, have a great day!
  

@@ -36,6 +36,14 @@ class User < ApplicationRecord
     validates :username, :password_digest, :email, :account, :selfie, presence: true
     validates_uniqueness_of :username
     validate :users_limit_per_account
+    validate :valid_member_number
+
+    def valid_member_number
+        member = Membership.find_by(account: self.account)
+        unless member
+            self.errors.add(:account, "Not a valid account number")
+        end
+    end
 
     def users_limit_per_account
         member = Membership.find_by(account: self.account)
