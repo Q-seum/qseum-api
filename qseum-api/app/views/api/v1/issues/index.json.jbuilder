@@ -1,3 +1,10 @@
 json.array! @issues do |issue|
-    json.extract! issue, :user_id, :created_at, :updated_at, :text
-  end
+    json.id issue.id 
+    json.user_id issue.user_id
+    json.username issue.user.username
+    json.email issue.user.email
+    json.phone issue.user.membership.phone   
+    json.created_at issue.created_at
+    json.text issue.text
+    json.resolved issue.resolved
+end

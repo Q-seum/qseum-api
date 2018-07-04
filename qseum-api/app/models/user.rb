@@ -14,12 +14,20 @@
 #  accommodations  :string
 #  selfie          :string
 #  valid_selfie    :boolean          default(FALSE), not null
+#  reset_digest    :string
 #
 
 require 'membership'
 
 class User < ApplicationRecord
+    
     has_many :visits, dependent: :destroy
+    has_many :password_resets
+
+    # attr_accessor :remember_token, :activation_token, :reset_token
+    # before_save :downcase_email
+    # before_create :create_activation_digest
+
     belongs_to :membership, foreign_key: :account
     # has_one_attached :image
     
@@ -42,7 +50,15 @@ class User < ApplicationRecord
         end
     end
 
+
+
     def to_s
         username
+    end
+
+    private
+
+    def downcase_email
+    self.email = email.downcase
     end
 end
