@@ -35,8 +35,9 @@ class User < ApplicationRecord
     has_secure_token :api_token
     validates :username, :password_digest, :email, :account, :selfie, presence: true
     validates_uniqueness_of :username
-    validate :users_limit_per_account
     validate :valid_member_number
+    validate :users_limit_per_account
+
 
     def valid_member_number
         member = Membership.find_by(account: self.account)
