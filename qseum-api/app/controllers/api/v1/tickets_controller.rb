@@ -13,7 +13,7 @@ class Api::V1::TicketsController < ApplicationController
 
   private
   def ticket_params
-    params.permit(:redeemed, :tickets, :recip_email, :buyer_email )
+    params.permit(:redeemed, :tickets, :recip_email, :buyer_email, :name )
   end
 
 end
