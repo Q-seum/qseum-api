@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style type="text/css">
+  table.qr-code {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+  }
+  table.qr-code td {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+    width: 7px;
+    height: 7px;
+  }
+  table.qr-code td.black { background-color: #000; }
+  table.qr-code td.white { background-color: #fff; }
+  </style>
+
   </head>
   <body>
     <h1>You have recieved  
@@ -24,29 +45,6 @@
       Here is your personal QR Code for admission into the building:
     </p>
 
-
-  <style>
-    table.qr-code {
-      border-width: 0;
-      border-style: none;
-      border-color: #0000ff;
-      border-collapse: collapse;
-    }
-    table.qr-code td {
-      border-width: 0;
-      border-style: none;
-      border-color: #0000ff;
-      border-collapse: collapse;
-      padding: 0;
-      margin: 0;
-      width: 7px;
-      height: 7px;
-    }
-    table.qr-code td.black { background-color: #000; }
-    table.qr-code td.white { background-color: #fff; }
-    </style>
-
-
     <table class="qr-code">
       <% @qr.modules.each_index do |x| -%>
       <tr>
@@ -61,8 +59,6 @@
       <% end %>
     </table>
     </body>
-    </html>
-     
       <br>
     <p>Thanks for attending the Museum of Life and Science, have a great day!</p>
   </body>
