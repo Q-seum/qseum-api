@@ -22,7 +22,7 @@ class Api::V1::ChargesController < ApplicationController
             :receipt_email => params[:email]
         )
         if charge && charge.paid == true
-            ticket = Ticket.create(
+            @ticket = Ticket.create(
                 :buyer_email => params[:email],
                 :recip_email => params[:recip_email],
                 :general => params[:general],
@@ -31,10 +31,8 @@ class Api::V1::ChargesController < ApplicationController
                 :child => params[:child]
             )
 
-            render "api/v1/tickets/show.json", status:201
-
-            TicketMailer.send_ticket(ticket).deliver_now
-            render status: 201, json: ticket
+            TicketMailer.send_ticket(@ticket).deliver_now
+            render status: 201, json: @ticket
         else
             render json: { error: Stripe::CardError } 
         end
