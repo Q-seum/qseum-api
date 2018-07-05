@@ -16,6 +16,9 @@
     <% if @ticket.child %> 
       <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
     <% end %>
+    <% if @ticket.recip_email %>
+        from <%= @ticket.name %>
+    <% end %>
     to the Museum of Life and Science!</h1>
     <p>
       Here is your personal QR Code for admission into the building:
