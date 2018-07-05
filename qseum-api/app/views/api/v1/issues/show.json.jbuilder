@@ -5,5 +5,6 @@ json.data do
         json.updated @issue.updated_at
         json.text @issue.text
         json.user @issue.user.username
+        json.resolved @issue.resolved
     end
 end
