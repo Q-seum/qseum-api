@@ -45,20 +45,10 @@
       Here is your personal QR Code for admission into the building:
     </p>
 
-    <table class="qr-code">
-      <% @qr.modules.each_index do |x| -%>
-      <tr>
-      <% @qr.modules.each_index do |y| -%>
-       <% if @qr.dark?(x,y) %>
-        <td class="black"/>
-       <% else %>
-        <td class="white"/>
-       <% end %>
-      <% end %>
-      </tr>
-      <% end %>
-    </table>
+    <%= image_tag @qr %>
+  
     </body>
+
       <br>
     <p>Thanks for attending the Museum of Life and Science, have a great day!</p>
   </body>
