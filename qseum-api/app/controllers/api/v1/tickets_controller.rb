@@ -8,6 +8,7 @@ class Api::V1::TicketsController < ApplicationController
       render "api/v1/tickets/show.json", status:200
     else
       render json: { error: "This ticket has already been used." }
+    end
   end
 
   private
