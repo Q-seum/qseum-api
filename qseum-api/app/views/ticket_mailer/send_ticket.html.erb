@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style type="text/css">
+  table.qr-code {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+  }
+  table.qr-code td {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+    width: 7px;
+    height: 7px;
+  }
+  table.qr-code td.black { background-color: #000; }
+  table.qr-code td.white { background-color: #fff; }
+  </style>
+
   </head>
   <body>
     <h1>You have recieved  
@@ -16,48 +37,18 @@
     <% if @ticket.child %> 
       <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
     <% end %>
+    <% if @ticket.recip_email %>
+        from <%= @ticket.name %>
+    <% end %>
     to the Museum of Life and Science!</h1>
     <p>
       Here is your personal QR Code for admission into the building:
     </p>
 
-    <style>
-    table.qr-code {
-      border-width: 0;
-      border-style: none;
-      border-color: #0000ff;
-      border-collapse: collapse;
-    }
-    table.qr-code td {
-      border-width: 0;
-      border-style: none;
-      border-color: #0000ff;
-      border-collapse: collapse;
-      padding: 0;
-      margin: 0;
-      width: 7px;
-      height: 7px;
-    }
-    table.qr-code td.black { background-color: #000; }
-    table.qr-code td.white { background-color: #fff; }
-    </style>
+    <%= image_tag attachments['YourMuseumTicket.png'].url %>
+  
+    </body>
 
-
-    <table class="qr-code">
-      <%# <% qrcode = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/api/v1/tickets/#{@ticket.id}") %>
-      <% @qr.modules.each_index do |x| -%>
-      <tr>
-      <% @qr.modules.each_index do |y| -%>
-       <% if @qr.dark?(x,y) %>
-        <td class="black"/>
-       <% else %>
-        <td class="white"/>
-       <% end %>
-      <% end %>
-      </tr>
-      <% end %>
-    </table>
-   
       <br>
     <p>Thanks for attending the Museum of Life and Science, have a great day!</p>
   </body>

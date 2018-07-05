@@ -20,9 +20,15 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'stripe'
 gem 'figaro'
 gem 'sendgrid-ruby'
+gem 'premailer-rails'
+gem 'nokogiri'
+gem 'chunky_png'
+gem 'rqrcode_png'
+gem 'rqrcode-with-patches'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'rqrcode-with-patches'
+# gem 'rqrcode-with-patches'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

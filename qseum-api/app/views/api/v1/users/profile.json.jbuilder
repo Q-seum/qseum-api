@@ -11,6 +11,8 @@ json.data do
         json.membershipType @user.membership.membership_type
         json.joinDate @user.membership.join_date
         json.expirationDate (@user.membership.join_date + 1.year)
+        json.primaryUser @user.membership.primary_name
+        json.secondaryUser @user.membership.secondary_name
         json.visits @user.visits do |visit|
             json.id visit.id 
             json.primary visit.user.membership.primary_name
