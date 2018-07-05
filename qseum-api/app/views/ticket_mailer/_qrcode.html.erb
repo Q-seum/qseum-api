@@ -24,7 +24,6 @@
 
 
     <table class="qr-code">
-      <%# <% qrcode = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/api/v1/tickets/#{@ticket.id}") %>
       <% @qr.modules.each_index do |x| -%>
       <tr>
       <% @qr.modules.each_index do |y| -%>
