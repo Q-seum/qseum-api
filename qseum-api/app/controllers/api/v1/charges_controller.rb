@@ -31,6 +31,8 @@ class Api::V1::ChargesController < ApplicationController
                 :child => params[:child]
             )
 
+            render "api/v1/tickets/show.json", status:201
+
             TicketMailer.send_ticket(ticket).deliver_now
             render status: 201, json: ticket
         else
