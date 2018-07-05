@@ -20,6 +20,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'stripe'
 gem 'figaro'
 gem 'sendgrid-ruby'
+gem 'premailer-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'rqrcode-with-patches'
