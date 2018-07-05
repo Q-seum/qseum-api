@@ -39,6 +39,14 @@ class User < ApplicationRecord
     validate :users_limit_per_account
 
 
+ 
+
+    def to_s
+        username
+    end
+
+    private
+
     def valid_member_number
         member = Membership.find_by(account: self.account)
         unless member
@@ -52,20 +60,12 @@ class User < ApplicationRecord
         if existing_user
             second_user = User.where(:account => self.account).where.not( :id => existing_user[:id]).first
         end
-        if member.secondary_name && second_user
+        if member && member.secondary_name && second_user
             self.errors.add(:account, "2 users already exist for this membership account")
-        elsif !member.secondary_name && existing_user
+        elsif member && !member.secondary_name && existing_user
             self.errors.add(:account, "A user already exists for this membership account")
         end
     end
-
-
-
-    def to_s
-        username
-    end
-
-    private
 
     def downcase_email
     self.email = email.downcase
