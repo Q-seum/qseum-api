@@ -28,7 +28,8 @@ class Api::V1::ChargesController < ApplicationController
                 :general => params[:general],
                 :senior => params[:senior],
                 :military => params[:military],
-                :child => params[:child]
+                :child => params[:child],
+                :name => params[:name]
             )
 
             TicketMailer.send_ticket(@ticket).deliver_now
