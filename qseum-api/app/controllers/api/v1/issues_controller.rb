@@ -2,7 +2,8 @@ class Api::V1::IssuesController < ApplicationController
 
     def index
         if current_user && current_user.is_admin
-            @issues = Issue.todays_issues
+            @issues_new = Issue.weeks_issues.where(resolved: false)
+            @issues_resolved = Issue.weeks_issues.where(resolved: true)
         else
             render json: { error: "You are not authorized to access this data."}, status: 401 
         end
