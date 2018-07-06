@@ -7,7 +7,7 @@ class TicketMailer < ApplicationMailer
 
     def send_ticket(ticket)
         @ticket = ticket
-        @qr = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/api/v1/tickets/#{@ticket.id}").to_img.resize(200,200)
+        @qr = RQRCode::QRCode.new("https://q-seum.firebaseapp.com/tickets/#{@ticket.id}").to_img.resize(200,200)
         file = Tempfile.new('qrcode')
         file.close
         @qr.save(file.path)
