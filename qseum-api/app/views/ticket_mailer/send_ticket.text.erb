@@ -1,15 +1,15 @@
 
 You have received  
-    <% if @ticket.general %> 
+    <% if @ticket.general && @ticket.general > 0 %> 
       <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
     <% end %>
-    <% if @ticket.senior %> 
+    <% if @ticket.senior && @ticket.senior > 0 %> 
       <%= @ticket.senior %> senior admission <%= 'ticket'.pluralize(@ticket.senior) %>, 
     <% end %>
-    <% if @ticket.military %> 
+    <% if @ticket.military && @ticket.military > 0 %> 
       <%= @ticket.military %> military admission <%= 'ticket'.pluralize(@ticket.military) %>, 
     <% end %>
-    <% if @ticket.child %> 
+    <% if @ticket.child && @ticket.child > 0 %> 
       <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
     <% end %>
     <% if @ticket.recip_email %>
