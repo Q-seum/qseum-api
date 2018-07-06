@@ -13,6 +13,7 @@ class TicketMailer < ApplicationMailer
         @qr.save(file.path)
         @qr = @qr.to_data_url
         attachments.inline['YourMuseumTicket.png'] = File.read(file.path)
+        attachments['YourMuseumTicket.png'] = File.read(file.path)
         file.unlink
 
         if @ticket.recip_email
