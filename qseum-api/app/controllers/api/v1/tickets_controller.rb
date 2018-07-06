@@ -11,6 +11,15 @@ class Api::V1::TicketsController < ApplicationController
     end
   end
 
+  def update
+    @ticket = Ticket.find(params[:id])
+    if @ticket.update(ticket_params)
+        render "api/v1/tickets/show.json", status:201
+    else                
+        render json: @ticket.errors, status: 401
+    end
+  end
+
   private
   def ticket_params
     params.permit(:redeemed, :tickets, :recip_email, :buyer_email, :name )

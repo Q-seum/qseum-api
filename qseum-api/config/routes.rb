@@ -8,7 +8,7 @@ namespace :api do
       resource :logins, only: :create
       resources :issues, format: "json"
       resources :password_resets,     only: [:new, :create, :edit, :update]
-      resources :tickets, only: [:create, :show]
+      resources :tickets
       resources :charges
       
   end
