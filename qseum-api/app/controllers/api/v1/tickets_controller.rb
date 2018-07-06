@@ -14,7 +14,7 @@ class Api::V1::TicketsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:id])
     if @ticket.update(ticket_params)
-        render "api/v1/users/show.json", status:201
+        render "api/v1/tickets/show.json", status:201
     else                
         render json: @ticket.errors, status: 401
     end
