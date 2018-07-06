@@ -44,7 +44,7 @@ class Api::V1::IssuesController < ApplicationController
 
     private
         def issue_params
-            params.permit(:user_id, :text)
+            params.permit(:user_id, :text, :resolved)
         end
 
 end
