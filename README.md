@@ -4,7 +4,6 @@ Version 1
 Date: 7/4/18  
 Authors: molbrown / jacobfh   
 Date: 6/25/18   
-Current URL: https://secure-temple-21963.herokuapp.com/
 
 > **ALL date/time responses are in UTC. Be sure to update to user's local time zone.**
 
