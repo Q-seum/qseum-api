@@ -13,7 +13,7 @@
 class Issue < ApplicationRecord
     belongs_to :user, foreign_key: :user_id
 
-    scope :todays_issues, ->{ where("created_at > ?", Time.now.beginning_of_day - (60 * 60 * 24 * 7)).order('created_at DESC') }
+    scope :weeks_issues, ->{ where("created_at > ?", Time.now.beginning_of_day - (60 * 60 * 24 * 7)).order('created_at DESC') }
 
     validates :user_id, :text, presence: true
 
