@@ -20,11 +20,19 @@
   }
   table.qr-code td.black { background-color: #000; }
   table.qr-code td.white { background-color: #fff; }
-  </style>
+  </style> 
+
+  <img alt="" height="100" width="252" src="https://ci4.googleusercontent.com/proxy/Ia5Fl073HWymt0_LBkYbSO4XEiaaxfuCaOzNicKWIPqPPls5jOmogM6rYIgyAVabJ-GdFyBvzBwdiQapaY8DZ8fLjfJjkyr-AQw_Ex4TKGxS5VbUDHD8N9ZmiHdK8610sz_bx3oMezdxQA=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/notifications/hosted/20180110/Header/Left.png"
+   style="border:0;line-height:100%;width:100%;background-color: #aadce1;position:relative;top: 0;left: 0;" class="CToWUd">
+   <img src="https://preview.ibb.co/dimySJ/email_logo.png" style="width:150px;height:90px;position:absolute;top: 13px;left: 30px;">
+
+   
 
   </head>
   <body>
-    <h1>You have received  
+  <%= image_tag attachments['YourMuseumTicket.png'].url %>
+
+    <h2 style="font-family:Raleway;">You have received  
     <% if @ticket.general %> 
       <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
     <% end %>
@@ -41,15 +49,9 @@
         from <%= @ticket.name %>
     <% end %>
     to the Museum of Life and Science!</h1>
-    <p>
-      Here is your personal QR Code for admission into the building:
-    </p>
-
-    <%= image_tag attachments['YourMuseumTicket.png'].url %>
-  
-    </body>
-
-      <br>
-    <p>Thanks for attending the Museum of Life and Science, have a great day!</p>
+    <p style="font-family:Raleway;">
+      Above is your personal QR Code for admission into the building!
+    </p>  
+    <p style="font-family:Raleway;">Thanks for attending the Museum of Life and Science, have a great day!</p>
   </body>
 </html>
