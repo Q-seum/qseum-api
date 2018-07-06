@@ -1,10 +1,9 @@
-# Qseum-api Documentation
+# Qseum-API Documentation
 
 Version 1   
 Date: 7/4/18  
 Authors: molbrown / jacobfh   
 Date: 6/25/18   
-Current URL: https://secure-temple-21963.herokuapp.com/
 
 > **ALL date/time responses are in UTC. Be sure to update to user's local time zone.**
 
@@ -162,7 +161,7 @@ GET /api/v1/users/(:id)
                     "date": "2018-06-28T18:01:03.913Z"
                 }
             ],
-            "selfie": (firebase URL),
+            "selfie":(firebaseURL),
             "validSelfie": false
         }
     }
@@ -372,3 +371,53 @@ POST /api/v1/password_resets/(:id)
 
 **Response:**
 201 = Response will be user's data.
+
+## **11. Purchase Admission Tickets** 
+> As a result of this request, user's intended recipient will receive an email containing an admission QR code.
+
+**Request:**
+POST /api/v1/charges
+
+**Params:**  
+`email:string`  
+`name:string`  
+`amount:integer` **total price should be submitted in cents, and include calculated sales tax**  
+`source:token` **token returned from Stripe.js element**  
+`general:integer`  
+`senior:integer`  
+`military:integer`  
+`child:integer`  
+`recip_email:string` **optional param, if intended ticket recipient is not buyer**  
+
+Amount and ticket types are based on:  
+General Admission	**$20**  
+Senior	**$18**  
+Military	**$18**  
+Children ages 3-12	**$15**  
+
+**Response:**
+201 = charge created, response will include ticket info. Email will be sent upon charge creation.
+```JSON
+{
+    "id": 5,
+    "recip_email": null,
+    "buyer_email": "email@gmail.com",
+    "name": "Oliver Friend",
+    "created_at": "2018-07-04T21:12:21.352-04:00",
+    "updated_at": "2018-07-04T21:12:21.352-04:00",
+    "redeemed": false,
+    "general": 2,
+    "senior": 1,
+    "military": 3,
+    "child": 1
+}
+```
+
+## **12. Redeem a Ticket** 
+> Scanning the QR code in the user's email will bring you to the `api/v1/tickets/(:id)` path that you need to PATCH.
+
+**Request:**
+PATCH /api/v1/tickets/(:id)
+
+**Params:**
+`redeemed:true`

@@ -12,6 +12,7 @@
 #  senior      :integer
 #  military    :integer
 #  child       :integer
+#  name        :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

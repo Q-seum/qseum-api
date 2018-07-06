@@ -12,6 +12,7 @@
 #  senior      :integer
 #  military    :integer
 #  child       :integer
+#  name        :string
 #
 
 require 'test_helper'

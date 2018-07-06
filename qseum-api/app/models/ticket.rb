@@ -12,6 +12,7 @@
 #  senior      :integer
 #  military    :integer
 #  child       :integer
+#  name        :string
 #
 
 class Ticket < ApplicationRecord
