@@ -23,6 +23,7 @@ class Api::V1::ChargesController < ApplicationController
         )
         if charge && charge.paid == true
             @ticket = Ticket.create(
+                :charge_id => charge.id,
                 :buyer_email => params[:email],
                 :recip_email => params[:recip_email],
                 :general => params[:general],
