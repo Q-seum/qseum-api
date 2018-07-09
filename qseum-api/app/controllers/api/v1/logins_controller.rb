@@ -1,13 +1,13 @@
 class Api::V1::LoginsController < ApplicationController
-        skip_before_action :verify_authentication
+    skip_before_action :verify_authentication
     
-        def create
-            user = User.find_by(username: params[:username])
+    def create
+        user = User.find_by(username: params[:username])
     
-            if user && user.authenticate(params[:password])
+        if user && user.authenticate(params[:password])
                 render json: { token: user.api_token , id: user.id, admin: user.is_admin }, status: 201
-            else
+        else
                 render json: { error: "Incorrect username or password" }, status: 401
-            end
         end
     end
+end

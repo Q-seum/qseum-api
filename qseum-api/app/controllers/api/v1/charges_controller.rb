@@ -45,6 +45,4 @@ class Api::V1::ChargesController < ApplicationController
     def charges_params
         params.permit(:amount, :source, :receipt_email)
     end
-
-
 end
