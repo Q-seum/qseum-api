@@ -5,7 +5,6 @@ class ApplicationController < ActionController::API
     helper_method :current_user
     # protect_from_forgery with: :null_session
     
-
     def current_user    
         @c_user ||= User.find_by(api_token: bearer_token)
         return @c_user
@@ -26,5 +25,4 @@ class ApplicationController < ActionController::API
             render json: { error: "You do not have permission to access these resources" }, status: :unauthorized
         end
     end
-
 end

@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <style type="text/css">
-  table.qr-code {
-    border-width: 0;
-    border-style: none;
-    border-color: #0000ff;
-    border-collapse: collapse;
-  }
-  table.qr-code td {
-    border-width: 0;
-    border-style: none;
-    border-color: #0000ff;
-    border-collapse: collapse;
-    padding: 0;
-    margin: 0;
-    width: 7px;
-    height: 7px;
-  }
-  table.qr-code td.black { background-color: #000; }
-  table.qr-code td.white { background-color: #fff; }
-  </style> 
+    <head>
+    <style type="text/css">
+        table.qr-code {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+        }
+        table.qr-code td {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+        padding: 0;
+        margin: 0;
+        width: 7px;
+        height: 7px;
+        }
+        table.qr-code td.black { background-color: #000; }
+        table.qr-code td.white { background-color: #fff; }
+    </style> 
+    </head>
+    <header>
+        <img height="100" width="252" src="https://ci4.googleusercontent.com/proxy/Ia5Fl073HWymt0_LBkYbSO4XEiaaxfuCaOzNicKWIPqPPls5jOmogM6rYIgyAVabJ-GdFyBvzBwdiQapaY8DZ8fLjfJjkyr-AQw_Ex4TKGxS5VbUDHD8N9ZmiHdK8610sz_bx3oMezdxQA=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/notifications/hosted/20180110/Header/Left.png"
+        style="border:0;line-height:100%;width:100%;background-color: #aadce1;position:relative;top: 0;left: 0;" class="CToWUd">
+        <img src="https://preview.ibb.co/e0dREy/Untitled_3.png" style="width:200px;height:90px;position:absolute;top: 1.75%;left: 3%;">
+    </header>
+    <body>
+        <%= image_tag attachments['YourMuseumTicket.png'].url %>
 
-  </head>
-  <header>
-  <img height="100" width="252" src="https://ci4.googleusercontent.com/proxy/Ia5Fl073HWymt0_LBkYbSO4XEiaaxfuCaOzNicKWIPqPPls5jOmogM6rYIgyAVabJ-GdFyBvzBwdiQapaY8DZ8fLjfJjkyr-AQw_Ex4TKGxS5VbUDHD8N9ZmiHdK8610sz_bx3oMezdxQA=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/notifications/hosted/20180110/Header/Left.png"
-  style="border:0;line-height:100%;width:100%;background-color: #aadce1;position:relative;top: 0;left: 0;" class="CToWUd">
-  <img src="https://preview.ibb.co/e0dREy/Untitled_3.png" style="width:200px;height:90px;position:absolute;top: 1.75%;left: 3%;">
-  </header>
-  <body>
-  <%= image_tag attachments['YourMuseumTicket.png'].url %>
-
-    <h2 style="font-family:Raleway;">You have received  
-    <% if @ticket.general && @ticket.general > 0 %> 
-      <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
-    <% end %>
-    <% if @ticket.senior && @ticket.senior > 0 %> 
-      <%= @ticket.senior %> senior admission <%= 'ticket'.pluralize(@ticket.senior) %>, 
-    <% end %>
-    <% if @ticket.military && @ticket.military > 0 %> 
-      <%= @ticket.military %> military admission <%= 'ticket'.pluralize(@ticket.military) %>, 
-    <% end %>
-    <% if @ticket.child && @ticket.child > 0 %> 
-      <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
-    <% end %>
-    <% if @ticket.recip_email %>
+        <h2 style="font-family:Raleway;">You have received  
+        <% if @ticket.general && @ticket.general > 0 %> 
+            <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
+        <% end %>
+        <% if @ticket.senior && @ticket.senior > 0 %> 
+            <%= @ticket.senior %> senior admission <%= 'ticket'.pluralize(@ticket.senior) %>, 
+        <% end %>
+        <% if @ticket.military && @ticket.military > 0 %> 
+            <%= @ticket.military %> military admission <%= 'ticket'.pluralize(@ticket.military) %>, 
+        <% end %>
+        <% if @ticket.child && @ticket.child > 0 %> 
+            <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
+        <% end %>
+        <% if @ticket.recip_email %>
         from <%= @ticket.name %>
-    <% end %>
-    to the Museum of Life and Science!</h2>
-    <p style="font-family:Raleway;">
-      The museum will scan your QR Code for admission into the building!
-    </p>  
-    <p style="font-family:Raleway;">Thanks for attending the Museum of Life and Science, have a great day!</p>
-  </body>
+        <% end %>
+        to the Museum of Life and Science!</h2>
+        <p style="font-family:Raleway;">
+            The museum will scan your QR Code for admission into the building!
+        </p>  
+        <p style="font-family:Raleway;">Thanks for attending the Museum of Life and Science, have a great day!
+        </p>
+    </body>
 </html>

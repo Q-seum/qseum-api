@@ -23,14 +23,7 @@ class User < ApplicationRecord
     
     has_many :visits, dependent: :destroy
     has_many :password_resets
-
-    # attr_accessor :remember_token, :activation_token, :reset_token
-    # before_save :downcase_email
-    # before_create :create_activation_digest
-
     belongs_to :membership, foreign_key: :account
-    # has_one_attached :image
-    
     has_secure_password
     has_secure_token :api_token
     validates :username, :password_digest, :email, :account, :selfie, presence: true
@@ -39,36 +32,32 @@ class User < ApplicationRecord
     validate :valid_member_number
     validate :users_limit_per_account
 
-
- 
-
     def to_s
         username
     end
 
     private
-
-    def valid_member_number
-        member = Membership.find_by(account: self.account)
-        unless member
-            self.errors.add(:account, "Not a valid account number")
+        def valid_member_number
+            member = Membership.find_by(account: self.account)
+            unless member
+                self.errors.add(:account, "Not a valid account number")
+            end
         end
-    end
 
-    def users_limit_per_account
-        member = Membership.find_by(account: self.account)
-        existing_user = User.where(:account => self.account).first
-        if existing_user
-            second_user = User.where(:account => self.account).where.not( :id => existing_user[:id]).first
+        def users_limit_per_account
+            member = Membership.find_by(account: self.account)
+            existing_user = User.where(:account => self.account).first
+            if existing_user
+                second_user = User.where(:account => self.account).where.not( :id => existing_user[:id]).first
+            end
+            if member && member.secondary_name && second_user
+                self.errors.add(:account, "2 users already exist for this membership account")
+            elsif member && !member.secondary_name && existing_user
+                self.errors.add(:account, "A user already exists for this membership account")
+            end
         end
-        if member && member.secondary_name && second_user
-            self.errors.add(:account, "2 users already exist for this membership account")
-        elsif member && !member.secondary_name && existing_user
-            self.errors.add(:account, "A user already exists for this membership account")
-        end
-    end
 
-    def downcase_email
-    self.email = email.downcase
-    end
+        def downcase_email
+            self.email = email.downcase
+        end
 end

@@ -17,8 +17,7 @@ class Api::V1::UsersController < ApplicationController
             render "api/v1/users/show.json", status:201
         else                
             render json: @user.errors, status: 401
-        end
-        
+        end  
     end
 
     def show
@@ -48,10 +47,7 @@ class Api::V1::UsersController < ApplicationController
             @user = User.find(params[:id])
         end
 
- 
-
         def user_params
             params.permit(:account, :username, :password, :email, :selfie, :valid_selfie, :accomodations)
         end
-
 end

@@ -15,7 +15,6 @@ class TicketMailer < ApplicationMailer
         attachments.inline['YourMuseumTicket.png'] = File.read(file.path)
         attachments['YourMuseumTicket.png'] = File.read(file.path)
         file.unlink
-
         if @ticket.recip_email
             mail to: @ticket.recip_email, subject: "Q-seum Admission Ticket"
         else

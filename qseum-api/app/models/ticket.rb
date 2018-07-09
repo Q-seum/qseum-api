@@ -16,6 +16,5 @@
 #
 
 class Ticket < ApplicationRecord
-
-validates :buyer_email, presence: true
+    validates :buyer_email, presence: true
 end

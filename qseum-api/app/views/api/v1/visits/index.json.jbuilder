@@ -8,4 +8,4 @@ json.array! @visits do |visit|
     json.account visit.account
     json.membershipType visit.user.membership.membership_type
     json.visitors visit.visitors 
-  end
+end
