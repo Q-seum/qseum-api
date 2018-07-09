@@ -1,6 +1,7 @@
 class Api::V1::ChargesController < ApplicationController
     skip_before_action :verify_authentication
     require 'rqrcode'
+    include MakeTicket
 
     def new
     end
@@ -22,18 +23,8 @@ class Api::V1::ChargesController < ApplicationController
             :receipt_email => params[:email]
         )
         if charge && charge.paid == true
-            @ticket = Ticket.create(
-                :charge_id => charge.id,
-                :buyer_email => params[:email],
-                :recip_email => params[:recip_email],
-                :general => params[:general],
-                :senior => params[:senior],
-                :military => params[:military],
-                :child => params[:child],
-                :name => params[:name]
-            )
-
-            TicketMailer.send_ticket(@ticket).deliver_later
+            @ticket = new_ticket(charge)
+            email_ticket(@ticket)
             render status: 201, json: @ticket
         else
             render json: { error: Stripe::CardError } 
