@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Roboto');
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <header>
         <img height="100" width="252" src="https://ci4.googleusercontent.com/proxy/Ia5Fl073HWymt0_LBkYbSO4XEiaaxfuCaOzNicKWIPqPPls5jOmogM6rYIgyAVabJ-GdFyBvzBwdiQapaY8DZ8fLjfJjkyr-AQw_Ex4TKGxS5VbUDHD8N9ZmiHdK8610sz_bx3oMezdxQA=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/notifications/hosted/20180110/Header/Left.png"
         style="border:0;line-height:100%;width:100%;background-color: #aadce1;position:relative;top: 0;left: 0;" class="CToWUd">
-        <img src="https://preview.ibb.co/e0dREy/Untitled_3.png" style="width:200px;height:90px;position:absolute;top: 1.75%;left: 3%;">
     </header>
     <body>
+        <img src="https://preview.ibb.co/e0dREy/Untitled_3.png" style="width:200px;height:90px;">
         <%= image_tag attachments['YourMuseumTicket.png'].url %>
-        <h2 style="font-family:Roboto;">You have received  
+        <h2 style="font-family:Raleway;">You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
             <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
         <% end %>
@@ -31,6 +30,9 @@
         to the Museum of Life and Science!</h2>
         <p style="font-family:Roboto;">
             The museum will scan your QR Code for admission into the building!
+        </p>  
+        <p style="font-family:Roboto;">
+            Your QR Code will expire after your visit.
         </p>  
         <p style="font-family:Roboto;">Thanks for attending the Museum of Life and Science, have a great day!
         </p>
