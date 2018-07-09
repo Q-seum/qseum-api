@@ -14,7 +14,7 @@
         <img src="https://preview.ibb.co/e0dREy/Untitled_3.png" style="width:200px;height:90px;">
         <br>
         <%= image_tag attachments['YourMuseumTicket.png'].url %>
-        <h2 style="font-family:Roboto;">
+        <p style="font-family:Roboto; font-size:1.5em;">
         You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
             <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
@@ -31,14 +31,14 @@
         <% if @ticket.recip_email %>
         from <%= @ticket.name %>
         <% end %>
-        to the Museum of Life and Science!</h2>
-        <h3 style="font-family:Roboto;">
+        to the Museum of Life and Science!</p>
+        <p style="font-family:Roboto; font-size:1.2em;">
             The museum will scan your QR Code for admission into the building.
-        </h3>  
-        <h3 style="font-family:Roboto;">
+        </p>  
+        <p style="font-family:Roboto; font-size:1.2em;">
             Your QR Code will expire after your visit. This is a single-use ticket.
-        </h3>  
-        <h3 style="font-family:Roboto;">Thanks for attending the Museum of Life and Science, have a great day!
-        </h3>
+        </p>  
+        <p style="font-family:Roboto; font-size:1.2em;">Thanks for attending the Museum of Life and Science, have a great day!
+        </p>
     </body>
 </html>
