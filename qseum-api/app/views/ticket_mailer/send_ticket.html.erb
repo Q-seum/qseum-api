@@ -4,26 +4,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
     </style>
-    <style type="text/css">
-        table.qr-code {
-        border-width: 0;
-        border-style: none;
-        border-color: #0000ff;
-        border-collapse: collapse;
-        }
-        table.qr-code td {
-        border-width: 0;
-        border-style: none;
-        border-color: #0000ff;
-        border-collapse: collapse;
-        padding: 0;
-        margin: 0;
-        width: 7px;
-        height: 7px;
-        }
-        table.qr-code td.black { background-color: #000; }
-        table.qr-code td.white { background-color: #fff; }
-    </style> 
     </head>
     <header>
         <img height="100" width="252" src="https://ci4.googleusercontent.com/proxy/Ia5Fl073HWymt0_LBkYbSO4XEiaaxfuCaOzNicKWIPqPPls5jOmogM6rYIgyAVabJ-GdFyBvzBwdiQapaY8DZ8fLjfJjkyr-AQw_Ex4TKGxS5VbUDHD8N9ZmiHdK8610sz_bx3oMezdxQA=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/notifications/hosted/20180110/Header/Left.png"
@@ -32,7 +12,6 @@
     </header>
     <body>
         <%= image_tag attachments['YourMuseumTicket.png'].url %>
-
         <h2 style="font-family:Roboto;">You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
             <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
