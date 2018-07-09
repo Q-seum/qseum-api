@@ -1,16 +1,15 @@
-
 You have received  
     <% if @ticket.general && @ticket.general > 0 %> 
-      <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
+        <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
     <% end %>
     <% if @ticket.senior && @ticket.senior > 0 %> 
-      <%= @ticket.senior %> senior admission <%= 'ticket'.pluralize(@ticket.senior) %>, 
+        <%= @ticket.senior %> senior admission <%= 'ticket'.pluralize(@ticket.senior) %>, 
     <% end %>
     <% if @ticket.military && @ticket.military > 0 %> 
-      <%= @ticket.military %> military admission <%= 'ticket'.pluralize(@ticket.military) %>, 
+        <%= @ticket.military %> military admission <%= 'ticket'.pluralize(@ticket.military) %>, 
     <% end %>
     <% if @ticket.child && @ticket.child > 0 %> 
-      <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
+        <%= @ticket.child %> child admission <%= 'ticket'.pluralize(@ticket.child) %>
     <% end %>
     <% if @ticket.recip_email %>
         from <%= @ticket.name %>
@@ -18,6 +17,8 @@ You have received
 to the Museum of Life and Science!
 
 Attached is your personal QR Code for admission into the building.
+
+Your QR Code will expire after your visit.
  
 Thanks for attending the Museum of Life and Science, have a great day!
  
