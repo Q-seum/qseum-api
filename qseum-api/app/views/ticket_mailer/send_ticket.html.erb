@@ -13,7 +13,8 @@
     <body>
         <img src="https://preview.ibb.co/e0dREy/Untitled_3.png" style="width:200px;height:90px;">
         <%= image_tag attachments['YourMuseumTicket.png'].url %>
-        <h2 style="font-family:Roboto;">You have received  
+        <h2 style="font-family:Roboto;">
+        You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
             <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
         <% end %>
