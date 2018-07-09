@@ -2,7 +2,7 @@
 <html>
     <head>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Raleway');
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
     </style>
     <style type="text/css">
         table.qr-code {
@@ -33,7 +33,7 @@
     <body>
         <%= image_tag attachments['YourMuseumTicket.png'].url %>
 
-        <h2 style="font-family:Raleway;">You have received  
+        <h2 style="font-family:Roboto;">You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
             <%= @ticket.general %> general admission <%= 'ticket'.pluralize(@ticket.general) %>, 
         <% end %>
@@ -50,10 +50,10 @@
         from <%= @ticket.name %>
         <% end %>
         to the Museum of Life and Science!</h2>
-        <p style="font-family:Raleway;">
+        <p style="font-family:Roboto;">
             The museum will scan your QR Code for admission into the building!
         </p>  
-        <p style="font-family:Raleway;">Thanks for attending the Museum of Life and Science, have a great day!
+        <p style="font-family:Roboto;">Thanks for attending the Museum of Life and Science, have a great day!
         </p>
     </body>
 </html>
