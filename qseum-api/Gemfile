@@ -25,7 +25,9 @@ gem 'nokogiri'
 gem 'chunky_png'
 gem 'rqrcode_png'
 gem 'rqrcode-with-patches'
-
+gem 'redis'
+gem 'redis-namespace'
+gem 'sidekiq'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # gem 'rqrcode-with-patches'

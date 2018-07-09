@@ -33,7 +33,7 @@ class Api::V1::ChargesController < ApplicationController
                 :name => params[:name]
             )
 
-            TicketMailer.send_ticket(@ticket).deliver_now
+            TicketMailer.send_ticket(@ticket).deliver_later
             render status: 201, json: @ticket
         else
             render json: { error: Stripe::CardError } 
