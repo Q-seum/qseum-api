@@ -47,5 +47,4 @@ class Api::V1::IssuesController < ApplicationController
         def issue_params
             params.permit(:user_id, :text, :resolved)
         end
-
 end

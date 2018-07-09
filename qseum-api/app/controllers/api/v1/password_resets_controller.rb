@@ -38,6 +38,4 @@ class Api::V1::PasswordResetsController < ApplicationController
         def pwd_params
             params.permit(:user_id, :email, :used, :password)
         end
-
-
 end

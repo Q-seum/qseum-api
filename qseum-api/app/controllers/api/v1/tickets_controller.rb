@@ -23,5 +23,4 @@ class Api::V1::TicketsController < ApplicationController
         def ticket_params
             params.permit(:redeemed, :tickets, :recip_email, :buyer_email, :name )
         end
-
 end
