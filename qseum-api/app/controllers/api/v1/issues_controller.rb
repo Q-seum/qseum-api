@@ -36,7 +36,7 @@ class Api::V1::IssuesController < ApplicationController
         @issue = Issue.find(params[:id])
         respond_to do |format|
           if @issue.update(issue_params)
-            format.json { render json: @issue, status: :ok, location: @issue }
+            render json: @issue, status:200
           else
             format.json { render json: @issue.errors, status: :unprocessable_entity }
           end
