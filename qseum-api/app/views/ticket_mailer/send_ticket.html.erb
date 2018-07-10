@@ -11,7 +11,7 @@
     <br>
     <body>
         <br>
-        <%= image_tag attachments['YourMuseumTicket.png'].url %>
+        <img class="image" style="display:block;margin-left:auto;margin-right:auto;" <%= image_tag attachments['YourMuseumTicket.png'].url %>
         <p style="font-family:Roboto; font-size:1.5em;">
         You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
