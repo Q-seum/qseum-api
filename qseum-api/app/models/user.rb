@@ -30,7 +30,7 @@ class User < ApplicationRecord
     validates_uniqueness_of :username
     validates_uniqueness_of :email
     validate :valid_member_number
-    validate :users_limit_per_account
+    validate :users_limit_per_account, :on => :create
 
     def to_s
         username
