@@ -10,7 +10,8 @@
     </header>
     <br>
     <body>
-        <%= image_tag attachments['YourMuseumTicket.png'].url %>
+        <br>
+         <%= image_tag attachments['YourMuseumTicket.png'].url, :class => "image", :style => "display:block; margin-left:auto;margin-right:auto;" %>
         <p style="font-family:Roboto; font-size:1.5em;">
         You have received  
         <% if @ticket.general && @ticket.general > 0 %> 
