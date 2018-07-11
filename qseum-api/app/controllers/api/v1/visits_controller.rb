@@ -12,7 +12,7 @@ class Api::V1::VisitsController < ApplicationController
         if current_user && current_user.is_admin
             @visit = Visit.new(visit_params)
             @visit.date = Time.now
-            if @visit.save!
+            if @visit.save
                 render :index, status:201
             else 
                 render json: { error: "You did not follow the visit parameters"}, status: 401

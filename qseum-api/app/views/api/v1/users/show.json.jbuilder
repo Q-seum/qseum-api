@@ -9,7 +9,7 @@ end
 json.data do
     json.id @user.id
     json.attributes do
-        json.accountNumber @user.account
+        json.accountNumber @user.membership.account
         json.username @user.username
         json.email @user.email
         json.apiToken @user.api_token
