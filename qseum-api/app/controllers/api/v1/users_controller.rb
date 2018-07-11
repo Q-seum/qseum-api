@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        @member = Membership.find_by(account: user_params[account])
+        @member = Membership.find_by(account: user_params[:account])
         @user.membership = @member
         if @user.save
             render "api/v1/users/show.json", status:201
