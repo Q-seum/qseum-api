@@ -29,7 +29,7 @@ class User < ApplicationRecord
     validates :username, :password_digest, :email, :account, :selfie, presence: true
     validates_uniqueness_of :username
     validates_uniqueness_of :email
-    validate :valid_member_number
+    validate :valid_member_number, :on => :create
     validate :users_limit_per_account, :on => :create
 
     def to_s
