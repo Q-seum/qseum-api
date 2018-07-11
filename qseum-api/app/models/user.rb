@@ -39,7 +39,9 @@ class User < ApplicationRecord
     private
         def valid_member_number
             member = Membership.find_by(account: self.account)
-            unless member
+            if member
+                self.membership = member
+            else
                 self.errors.add(:account, "Not a valid account number")
             end
         end
